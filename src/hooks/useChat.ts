@@ -8,7 +8,8 @@ export const useChat = (agent: Agent) => {
     isTyping: false,
     isConnected: true,
     isRecording: false,
-    error: null
+    error: null,
+    sidebarOpen: true
   });
 
   const [voiceRecording, setVoiceRecording] = useState<VoiceRecording>({

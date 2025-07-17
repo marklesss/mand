@@ -377,6 +377,11 @@
   .hover-scale:hover {
     transform: none !important;
   }
+  
+  /* Disable sidebar animations for reduced motion */
+  .sidebar-transition {
+    transition: none !important;
+  }
 }
 /* Enhanced gradient overlays */
 .gradient-overlay {

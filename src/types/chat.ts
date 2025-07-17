@@ -24,6 +24,7 @@ export interface ChatState {
   isConnected: boolean;
   isRecording: boolean;
   error: string | null;
+  sidebarOpen: boolean;
 }
 
 export interface VoiceRecording {

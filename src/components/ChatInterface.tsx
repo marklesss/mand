@@ -1,9 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { ArrowRight, Send, Phone, Video, MoreVertical, Wifi, WifiOff } from 'lucide-react';
+import { ArrowRight, Send, Phone, Video, MoreVertical, Wifi, WifiOff, Menu } from 'lucide-react';
 import { Agent } from '../types';
+import { ChatSession } from '../types/chat';
 import { ChatBubble } from './ChatBubble';
 import { TypingIndicator } from './TypingIndicator';
 import { VoiceRecorder } from './VoiceRecorder';
+import { ConversationSidebar } from './ConversationSidebar';
+import { HamburgerToggle } from './HamburgerToggle';
 import { useChat } from '../hooks/useChat';
 
 interface ChatInterfaceProps {
@@ -26,6 +29,8 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({ agent, onBack }) =
     stopRecording,
     clearError
   } = useChat(agent);
+
+  const [sidebarOpen, setSidebarOpen] = useState(true);
 
   // Auto-focus input on mount
   useEffect(() => {
@@ -57,6 +62,20 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({ agent, onBack }) =
     alert(`بدء مكالمة فيديو مع ${agent.name}`);
   };
 
+  const handleConversationSelect = (conversation: ChatSession) => {
+    console.log('Selected conversation:', conversation);
+    // Here you would typically load the selected conversation
+    // For now, we'll just close the sidebar on mobile
+    if (window.innerWidth < 1024) {
+      setSidebarOpen(false);
+    }
+  };
+
+  const handleNewConversation = () => {
+    console.log('Starting new conversation');
+    // Here you would typically create a new conversation
+  };
+
   if (!chatState.currentSession) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-orange-50 flex items-center justify-center">
@@ -66,13 +85,23 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({ agent, onBack }) =
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-orange-50 relative overflow-hidden" dir="rtl">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-orange-50 relative overflow-hidden flex" dir="rtl">
       {/* Background gradients */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-radial from-orange-200/30 via-blue-200/20 to-purple-200/15 rounded-full blur-3xl opacity-60" />
       </div>
 
-      <div className="relative flex flex-col h-screen">
+      {/* Sidebar */}
+      <ConversationSidebar
+        isOpen={sidebarOpen}
+        onClose={() => setSidebarOpen(false)}
+        currentConversationId={chatState.currentSession.id}
+        onConversationSelect={handleConversationSelect}
+        onNewConversation={handleNewConversation}
+      />
+
+      {/* Main Chat Area */}
+      <div className="relative flex flex-col h-screen flex-1 min-w-0">
         {/* Chat Header */}
         <header className="backdrop-blur-xl bg-white/80 border-b border-white/30 shadow-lg shadow-black/5 px-4 py-3 flex-shrink-0">
           <div className="flex items-center justify-between">
@@ -110,6 +139,12 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({ agent, onBack }) =
             </div>
 
             <div className="flex items-center space-x-2 space-x-reverse">
+              <HamburgerToggle
+                isOpen={sidebarOpen}
+                onClick={() => setSidebarOpen(!sidebarOpen)}
+                className="lg:hidden"
+              />
+              
               <button
                 onClick={handleCall}
                 className="p-2 hover:bg-white/60 rounded-full transition-colors duration-200"
