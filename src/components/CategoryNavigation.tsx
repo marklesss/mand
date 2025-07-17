@@ -22,7 +22,7 @@ export const CategoryNavigation: React.FC<CategoryNavigationProps> = ({
       bgColor: 'bg-emerald-50/30',
       borderColor: 'border-emerald-100/50',
       hoverBg: 'hover:bg-emerald-50/50',
-      agents: 156,
+      agents: 0,
       description: 'الخدمات الحكومية والإدارية'
     },
     {
@@ -33,7 +33,7 @@ export const CategoryNavigation: React.FC<CategoryNavigationProps> = ({
       bgColor: 'bg-rose-50/30',
       borderColor: 'border-rose-100/50',
       hoverBg: 'hover:bg-rose-50/50',
-      agents: 89,
+      agents: 0,
       description: 'المنظمات الخيرية والتطوعية'
     },
     {
@@ -44,7 +44,7 @@ export const CategoryNavigation: React.FC<CategoryNavigationProps> = ({
       bgColor: 'bg-blue-50/30',
       borderColor: 'border-blue-100/50',
       hoverBg: 'hover:bg-blue-50/50',
-      agents: 234,
+      agents: 0,
       description: 'الخدمات الطبية والصحية'
     },
     {
@@ -55,7 +55,7 @@ export const CategoryNavigation: React.FC<CategoryNavigationProps> = ({
       bgColor: 'bg-purple-50/30',
       borderColor: 'border-purple-100/50',
       hoverBg: 'hover:bg-purple-50/50',
-      agents: 127,
+      agents: 1,
       description: 'خدمات الضيافة والإقامة'
     }
   ];
