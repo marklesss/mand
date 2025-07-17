@@ -69,9 +69,9 @@ export const ConversationSidebar: React.FC<ConversationSidebarProps> = ({
 
       {/* Sidebar */}
       <div 
-        className={`fixed top-0 right-0 h-full w-80 bg-white/95 backdrop-blur-xl border-l border-white/30 shadow-2xl z-50 transform transition-transform duration-300 ease-out ${
+        className={`fixed top-0 right-0 h-screen w-80 bg-white/95 backdrop-blur-xl border-l border-white/30 shadow-2xl z-50 transform transition-transform duration-300 ease-out ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
-        } lg:relative lg:translate-x-0 lg:w-80 lg:flex-shrink-0`}
+        } lg:relative lg:translate-x-0 lg:w-80 lg:flex-shrink-0 lg:h-full`}
         dir="rtl"
       >
         {/* Header */}

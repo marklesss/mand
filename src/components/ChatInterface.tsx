@@ -85,7 +85,7 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({ agent, onBack }) =
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-orange-50 relative overflow-hidden flex" dir="rtl">
+    <div className="h-screen bg-gradient-to-br from-blue-50 via-white to-orange-50 relative overflow-hidden flex" dir="rtl">
       {/* Background gradients */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-radial from-orange-200/30 via-blue-200/20 to-purple-200/15 rounded-full blur-3xl opacity-60" />
@@ -101,7 +101,7 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({ agent, onBack }) =
       />
 
       {/* Main Chat Area */}
-      <div className="relative flex flex-col h-screen flex-1 min-w-0">
+      <div className="relative flex flex-col h-full flex-1 min-w-0">
         {/* Chat Header */}
         <header className="backdrop-blur-xl bg-white/80 border-b border-white/30 shadow-lg shadow-black/5 px-4 py-3 flex-shrink-0">
           <div className="flex items-center justify-between">
