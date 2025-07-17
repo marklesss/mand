@@ -7,9 +7,10 @@ import { getAgentsByCategory } from '../data/mockAgents';
 interface AgentListProps {
   category: Category;
   onBack: () => void;
+  onStartChat: (agent: Agent) => void;
 }
 
-export const AgentList: React.FC<AgentListProps> = ({ category, onBack }) => {
+export const AgentList: React.FC<AgentListProps> = ({ category, onBack, onStartChat }) => {
   const [agents, setAgents] = useState<Agent[]>([]);
   const [filteredAgents, setFilteredAgents] = useState<Agent[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
@@ -65,9 +66,7 @@ export const AgentList: React.FC<AgentListProps> = ({ category, onBack }) => {
   }, [agents, searchQuery, filterOnline, sortBy]);
 
   const handleChat = (agent: Agent) => {
-    console.log('Starting chat with:', agent.name);
-    // Implement chat functionality
-    alert(`بدء محادثة مع ${agent.name}`);
+    onStartChat(agent);
   };
 
   const handleCall = (agent: Agent) => {
